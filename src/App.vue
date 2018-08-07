@@ -3,6 +3,7 @@
     <SearchBar @termChange="onTermChange"></SearchBar>
     <!-- <SearchBar v-on:termChange="onTermChange"></SearchBar> -->
     <VideoList></VideoList>
+    {{ videos.length }}
   </div>
 </template>
 
@@ -17,7 +18,11 @@ export default {
   components: {
     SearchBar,
     VideoList
-  }, 
+  },
+  // data() {}  ES6
+  data: function() {
+    return { videos: [] };
+  },
   methods: {
     onTermChange: function(searchTerm) {
       axios.get('https://www.googleapis.com/youtube/v3/search', {
@@ -27,7 +32,10 @@ export default {
           part: 'snippet',
           q: searchTerm
         }
-      }).then(response => console.log(response))
+      })
+        .then(response => {
+          this.videos = response.data.items;
+        })
     }
   }
 };
