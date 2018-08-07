@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <SearchBar @termChange="onTermChange"></SearchBar>
-    <!-- <SearchBar v-on:termChange="onTermChange"></SearchBar> -->
-    <VideoDetail :video="selectedVideo"></VideoDetail>
-    <VideoList :videos="videos" @videoSelect="onVideoSelect" ></VideoList>
-    <!-- <VideoList v-bind:videos="videos" ></VideoList> -->
+    <div class="row">
+      <VideoDetail :video="selectedVideo"></VideoDetail>
+      <VideoList :videos="videos" @videoSelect="onVideoSelect" ></VideoList>
+    </div>
   </div>
 </template>
 
