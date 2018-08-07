@@ -1,12 +1,19 @@
 <template>
   <div>
-    <input />
+    <input @input="onInput" />
+
+    <!-- <input v-on:input="onInput" /> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SearchBar'
+  name: 'SearchBar',
+  methods: {
+    onInput: function(event) { // emit an event to communicate with parent component
+      this.$emit('termChange', event.target.value);
+    }
+  }
 };
 </script>
 
